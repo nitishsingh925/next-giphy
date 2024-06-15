@@ -27,7 +27,5 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+ .gradient{@apply bg-gradient-to-r from-teal-600 via-blue-600 to-pink-600}
 }
