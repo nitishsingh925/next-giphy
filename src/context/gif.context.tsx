@@ -41,7 +41,9 @@ const GifProvider: React.FC<IGifProviderProps> = ({ children }) => {
   }, []);
 
   return (
-    <GifContext.Provider value={{ favorites }}>{children}</GifContext.Provider>
+    <GifContext.Provider value={{ favorites, setFavorites, categories }}>
+      {children}
+    </GifContext.Provider>
   );
 };
 export const useGifContext = () => {
