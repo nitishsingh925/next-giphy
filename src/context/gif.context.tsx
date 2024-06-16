@@ -27,6 +27,7 @@ interface IGifProviderProps {
 }
 const GifProvider: React.FC<IGifProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<any[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const [gf, setGf] = useState<GiphyFetch | null>(null);
 
