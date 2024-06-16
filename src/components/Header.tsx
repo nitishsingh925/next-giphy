@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { HiEllipsisVertical, HiMiniBars3BottomRight } from "react-icons/hi2";
-import { useGifContext } from "@/context/gif.context";
+import { IGifContext, useGifContext } from "@/context/gif.context";
 
 interface ICategory {
   name: string;
   name_encoded: string;
 }
 const Header: React.FC = () => {
-  const [categories, setCategories] = useState();
+  const [categories, setCategories] = useState<ICategory[]>();
   const [showCategories, setShowCategories] = useState(false);
 
-  const { favorites } = useGifContext;
+  const { favorites }: IGifContext = useGifContext();
 
   const fetchGifCategories = async () => {
     try {

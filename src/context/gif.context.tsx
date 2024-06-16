@@ -15,7 +15,7 @@ interface Category {
   name_encoded: string;
 }
 
-interface IGifContext {
+export interface IGifContext {
   favorites: any[];
   setFavorites: Dispatch<SetStateAction<any[]>>;
   categories: Category[];
