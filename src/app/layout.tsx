@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import GifProvider from "@/context/gif.context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,10 +21,12 @@ export default function RootLayout({
       <body
         className={`${inter.className}className="bg-neutral-950 text-white min-h-screen`}
       >
-        <div className="container px-6 py-4 mx-auto">
-          <Header />
-          <main>{children}</main>
-        </div>
+        <GifProvider>
+          <div className="container px-6 py-4 mx-auto">
+            <Header />
+            <main>{children}</main>
+          </div>
+        </GifProvider>
       </body>
     </html>
   );
