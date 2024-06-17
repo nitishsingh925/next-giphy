@@ -46,6 +46,8 @@ const GifProvider: React.FC<IGifProviderProps> = ({ children }) => {
         filter,
         setFilter,
         favorites,
+        setFavorites,
+        categories,
       }}
     >
       {children}
