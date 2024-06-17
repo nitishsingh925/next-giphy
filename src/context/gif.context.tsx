@@ -6,7 +6,6 @@ import {
   SetStateAction,
   createContext,
   useContext,
-  useEffect,
   useState,
 } from "react";
 
@@ -16,6 +15,11 @@ interface Category {
 }
 
 export interface IGifContext {
+  gf: GiphyFetch;
+  gifs: any[];
+  setGifs: Dispatch<SetStateAction<any[]>>;
+  filter: string;
+  setFilter: Dispatch<SetStateAction<string>>;
   favorites: any[];
   setFavorites: Dispatch<SetStateAction<any[]>>;
   categories: Category[];
@@ -28,20 +32,22 @@ interface IGifProviderProps {
 const GifProvider: React.FC<IGifProviderProps> = ({ children }) => {
   const [favorites, setFavorites] = useState<any[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
+  const [gifs, setGifs] = useState<any[]>([]);
+  const [filter, setFilter] = useState<string>("gifs");
 
-  const [gf, setGf] = useState<GiphyFetch | null>(null);
-
-  useEffect(() => {
-    const apiKey = process.env.NEXT_PUBLIC_GIPHY_API_KEY;
-    if (apiKey) {
-      setGf(new GiphyFetch(apiKey));
-    } else {
-      console.error("Giphy API key is not set in environment variables.");
-    }
-  }, []);
+  const gf = new GiphyFetch(process.env.NEXT_PUBLIC_GIPHY_API!);
 
   return (
-    <GifContext.Provider value={{ favorites, setFavorites, categories }}>
+    <GifContext.Provider
+      value={{
+        gf,
+        gifs,
+        setGifs,
+        filter,
+        setFilter,
+        favorites,
+      }}
+    >
       {children}
     </GifContext.Provider>
   );
