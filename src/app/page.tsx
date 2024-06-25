@@ -1,4 +1,5 @@
 "use client";
+import FilterGif from "@/components/Filter.gif";
 import Gif from "@/components/Gif";
 import { useGifContext } from "@/context/gif.context";
 import Image from "next/image";
@@ -25,6 +26,8 @@ const Home: React.FC = () => {
         unoptimized
         className="mt-2 rounded w-full"
       />
+      {/* Filter Sections */}
+      <FilterGif showTrending />
       {/* Filter Gifs */}
       <div className=" mt-2 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-2">
         {gifs.map((gif, index) => {
